@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   TRU BOND BACK CLEANING PERTH — Design System
+   Palette: Deep Navy + Fresh Green + Warm White
+   Typography: Cabinet Grotesk (display) + General Sans (body)
+   ========================================================= */
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Brand Palette — OKLCH raw L C H values */
+    /* Deep Navy Blue */
+    --brand-navy:       0.28 0.12 255;
+    /* Fresh Forest Green */
+    --brand-green:      0.48 0.14 155;
+    /* Light Green accent */
+    --brand-green-light: 0.72 0.14 155;
+    /* Gold / amber trust accent */
+    --brand-gold:       0.78 0.14 82;
+
+    /* Semantic tokens */
+    --background:       0.98 0.005 250;
+    --foreground:       0.18 0.04 260;
+    --card:             1 0 0;
+    --card-foreground:  0.18 0.04 260;
+    --popover:          1 0 0;
+    --popover-foreground: 0.18 0.04 260;
+
+    /* Primary = Navy */
+    --primary:          0.28 0.12 255;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary = Green */
+    --secondary:        0.48 0.14 155;
+    --secondary-foreground: 0.98 0 0;
+
+    --muted:            0.94 0.01 250;
+    --muted-foreground: 0.5 0.04 255;
+
+    --accent:           0.94 0.03 155;
+    --accent-foreground: 0.28 0.12 255;
+
+    --destructive:      0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border:           0.88 0.02 250;
+    --input:            0.88 0.02 250;
+    --ring:             0.48 0.14 155;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-brand-navy {
+    color: oklch(var(--brand-navy));
+  }
+  .bg-brand-navy {
+    background-color: oklch(var(--brand-navy));
+  }
+  .text-brand-green {
+    color: oklch(var(--brand-green));
+  }
+  .bg-brand-green {
+    background-color: oklch(var(--brand-green));
+  }
+  .text-brand-gold {
+    color: oklch(var(--brand-gold));
+  }
+  .bg-brand-gold {
+    background-color: oklch(var(--brand-gold));
+  }
+  .border-brand-navy {
+    border-color: oklch(var(--brand-navy));
+  }
+  .border-brand-green {
+    border-color: oklch(var(--brand-green));
+  }
+  .gradient-hero {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--brand-navy) / 0.95) 0%,
+      oklch(0.22 0.10 255 / 0.90) 50%,
+      oklch(var(--brand-green) / 0.85) 100%
+    );
+  }
+  .gradient-section {
+    background: linear-gradient(
+      160deg,
+      oklch(0.96 0.02 250) 0%,
+      oklch(0.98 0.01 155) 100%
+    );
+  }
+  .gradient-cta {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--brand-green)) 0%,
+      oklch(0.42 0.16 155) 100%
+    );
+  }
+  .text-shadow-hero {
+    text-shadow: 0 2px 16px rgba(0,0,0,0.35);
+  }
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px oklch(var(--brand-navy) / 0.15);
+  }
+}
