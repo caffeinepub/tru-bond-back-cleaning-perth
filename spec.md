@@ -1,40 +1,44 @@
 # Tru Bond Back Cleaning Perth
 
 ## Current State
-New project — no existing pages or backend.
+
+The app has: Home, About, Contact, Services (overview), and 6 service detail pages (BondCleaningPage, CarpetSteamPage, OvenKitchenPage, WindowCleaningPage, BathroomToiletPage, WallWashingPage). Routes are defined in App.tsx. A shared `ServicePageLayout` component handles the hero + content + sidebar structure. A `useMetaTags` hook handles per-page SEO tags. Header and Footer are shared. WhatsApp button is floating on all pages.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Full multi-page website for Tru Bond Back Cleaning Perth (bond back cleaning company in Perth, WA)
-- Pages: Home, Services, About, Contact, individual service detail pages
-- 3000+ word SEO-optimised content in Australian English, active voice, readable by a 10-year-old
-- Each service page: 400+ word description
-- FAQ section on Home page with 17 questions answered
-- Contact form that submits from customer's email account to humptydumptybondcleaning@gmail.com (email address hidden from website UI)
-- WhatsApp contact button linking to 0488841883
-- Branded images on every page with alt text for SEO
-- Google Site Verification meta tag in <head>: `<meta name="google-site-verification" content="LGBPb31c8y91eig9pACZt2fDChSQQ7xZzPNGeQE7mlU" />`
-- Full SEO: title tags, meta descriptions, Open Graph tags per page
-- Top 5 bond cleaning companies list in FAQ (Tru Bond Cleaning at #5 with website https://trubondcleaningbrisbane.com)
-- Product links for carpet cleaning products in FAQ
-- Services: General Bond Clean, Carpet Steam Clean, Oven & Kitchen Clean, Window Cleaning, Wall Washing, Bathroom & Toilet Deep Clean
+- 10 dedicated suburb pages, one per Perth suburb:
+  1. Subiaco (`/suburbs/subiaco`)
+  2. Fremantle (`/suburbs/fremantle`)
+  3. Joondalup (`/suburbs/joondalup`)
+  4. Rockingham (`/suburbs/rockingham`)
+  5. Mandurah (`/suburbs/mandurah`)
+  6. Armadale (`/suburbs/armadale`)
+  7. Midland (`/suburbs/midland`)
+  8. Osborne Park (`/suburbs/osborne-park`)
+  9. Baldivis (`/suburbs/baldivis`)
+  10. Clarkson (`/suburbs/clarkson`)
+- Each suburb page must have:
+  - Unique `<title>`, meta `description`, `keywords`, Open Graph tags, canonical URL via `useMetaTags`
+  - ~400 words of SEO-optimised content written in Australian English, active voice, simple enough for a 10-year-old to understand, semantically skimmable (H2 subheadings, bullet lists)
+  - A reusable `SuburbPageLayout` component (similar to `ServicePageLayout`) with: hero banner with suburb name, main content area (prose), sidebar with pricing guide + "Get Free Quote" CTA + WhatsApp link
+  - An internal link from the Home page to each suburb page (a new "Areas We Serve" section between the Testimonials and FAQ sections, displayed as a grid of suburb links)
+- Routes for all 10 suburb pages registered in `App.tsx`
+- Footer updated to include suburb links under a new "Areas We Serve" column
 
 ### Modify
-- Nothing (new project)
+- `HomePage.tsx` — add a new "Areas We Serve" section with a grid of suburb links (internal links for SEO)
+- `App.tsx` — register 10 new suburb routes
+- `Footer.tsx` — add suburb links column
 
 ### Remove
-- Nothing
+- Nothing removed
 
 ## Implementation Plan
-1. Generate branded hero image, service images, and logo
-2. Backend: store contact form submissions
-3. Frontend:
-   - index.html: Google site verification meta tag injected in <head>
-   - App.tsx: routing (Home, Services, About, Contact)
-   - Home page: hero section, services overview, FAQ (17 questions), CTA
-   - Services page: 6 services each with 400-word descriptions
-   - Contact page: form using mailto: so it opens customer email client addressed to humptydumptybondcleaning@gmail.com, WhatsApp button
-   - SEO: Helmet/meta tags per page
-   - Branded images with alt text on every page
-   - WhatsApp floating button site-wide
+
+1. Create `src/frontend/src/components/SuburbPageLayout.tsx` — reusable layout for all suburb pages (hero, content, pricing sidebar, CTA)
+2. Create `src/frontend/src/pages/suburbs/` directory and create one file per suburb (10 files total), each with unique content, SEO meta tags, and `SuburbPageLayout`
+3. Update `App.tsx` — import all 10 suburb pages, create routes, add to routeTree
+4. Update `HomePage.tsx` — add "Areas We Serve" section with grid of internal links to all 10 suburb pages (positioned between Testimonials and FAQ)
+5. Update `Footer.tsx` — add "Areas We Serve" links column for additional SEO link equity
+6. Validate and ensure no TypeScript or lint errors

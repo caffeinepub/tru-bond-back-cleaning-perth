@@ -699,6 +699,110 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Areas We Serve */}
+      <section
+        className="py-16 bg-background"
+        aria-labelledby="suburbs-heading"
+      >
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h2
+              id="suburbs-heading"
+              className="text-3xl md:text-4xl font-bold text-brand-navy mb-4 font-display"
+            >
+              Bond Cleaning Across Perth — Areas We Serve
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              We cover all Perth suburbs. Click your suburb for local bond
+              cleaning pricing and info.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {[
+              {
+                name: "Subiaco",
+                path: "/suburbs/subiaco",
+                ocid: "suburbs.item.1",
+              },
+              {
+                name: "Fremantle",
+                path: "/suburbs/fremantle",
+                ocid: "suburbs.item.2",
+              },
+              {
+                name: "Joondalup",
+                path: "/suburbs/joondalup",
+                ocid: "suburbs.item.3",
+              },
+              {
+                name: "Rockingham",
+                path: "/suburbs/rockingham",
+                ocid: "suburbs.item.4",
+              },
+              {
+                name: "Mandurah",
+                path: "/suburbs/mandurah",
+                ocid: "suburbs.item.5",
+              },
+              {
+                name: "Armadale",
+                path: "/suburbs/armadale",
+                ocid: "suburbs.item.6",
+              },
+              {
+                name: "Midland",
+                path: "/suburbs/midland",
+                ocid: "suburbs.item.7",
+              },
+              {
+                name: "Osborne Park",
+                path: "/suburbs/osborne-park",
+                ocid: "suburbs.item.8",
+              },
+              {
+                name: "Baldivis",
+                path: "/suburbs/baldivis",
+                ocid: "suburbs.item.9",
+              },
+              {
+                name: "Clarkson",
+                path: "/suburbs/clarkson",
+                ocid: "suburbs.item.10",
+              },
+            ].map(({ name, path, ocid }, i) => (
+              <motion.div
+                key={path}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+              >
+                <Link
+                  to={path}
+                  data-ocid={ocid}
+                  className="block bg-card border border-border rounded-xl p-4 text-center shadow-card hover:shadow-card-lg hover:border-brand-green/40 hover:-translate-y-1 transition-all duration-200 group"
+                >
+                  <MapPin className="w-5 h-5 text-brand-green mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                  <div className="font-bold text-brand-navy text-sm font-display">
+                    {name}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    Bond Cleaning {name}
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section className="py-16 bg-background" aria-labelledby="faq-heading">
         <div className="container mx-auto px-4 max-w-4xl">

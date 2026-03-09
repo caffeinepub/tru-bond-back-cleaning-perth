@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-brand-navy text-white" aria-label="Site footer">
       <div className="container mx-auto px-4 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <img
@@ -91,6 +91,36 @@ export default function Footer() {
                     className="text-sm text-white/75 hover:text-white transition-colors"
                   >
                     {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Areas We Serve */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">
+              Areas We Serve
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {[
+                { name: "Subiaco", href: "/suburbs/subiaco" },
+                { name: "Fremantle", href: "/suburbs/fremantle" },
+                { name: "Joondalup", href: "/suburbs/joondalup" },
+                { name: "Rockingham", href: "/suburbs/rockingham" },
+                { name: "Mandurah", href: "/suburbs/mandurah" },
+                { name: "Armadale", href: "/suburbs/armadale" },
+                { name: "Midland", href: "/suburbs/midland" },
+                { name: "Osborne Park", href: "/suburbs/osborne-park" },
+                { name: "Baldivis", href: "/suburbs/baldivis" },
+                { name: "Clarkson", href: "/suburbs/clarkson" },
+              ].map((suburb) => (
+                <li key={suburb.href}>
+                  <Link
+                    to={suburb.href}
+                    className="text-sm text-white/75 hover:text-white transition-colors"
+                  >
+                    {suburb.name}
                   </Link>
                 </li>
               ))}

@@ -19,6 +19,16 @@ import CarpetSteamPage from "./pages/services/CarpetSteamPage";
 import OvenKitchenPage from "./pages/services/OvenKitchenPage";
 import WallWashingPage from "./pages/services/WallWashingPage";
 import WindowCleaningPage from "./pages/services/WindowCleaningPage";
+import ArmadalePage from "./pages/suburbs/ArmadalePage";
+import BaldivisPage from "./pages/suburbs/BaldivisPage";
+import ClarksonPage from "./pages/suburbs/ClarksonPage";
+import FremantlePage from "./pages/suburbs/FremantlePage";
+import JoondalupPage from "./pages/suburbs/JoondalupPage";
+import MandurahPage from "./pages/suburbs/MandurahPage";
+import MidlandPage from "./pages/suburbs/MidlandPage";
+import OsborneParkPage from "./pages/suburbs/OsborneParkPage";
+import RockinghamPage from "./pages/suburbs/RockinghamPage";
+import SubiacoPage from "./pages/suburbs/SubiacoPag";
 
 function RootLayout() {
   return (
@@ -98,6 +108,66 @@ const contactRoute = createRoute({
   component: ContactPage,
 });
 
+const subiacoRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/subiaco",
+  component: SubiacoPage,
+});
+
+const fremantleRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/fremantle",
+  component: FremantlePage,
+});
+
+const joondalupRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/joondalup",
+  component: JoondalupPage,
+});
+
+const rockinghamRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/rockingham",
+  component: RockinghamPage,
+});
+
+const mandurahRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/mandurah",
+  component: MandurahPage,
+});
+
+const armadaleRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/armadale",
+  component: ArmadalePage,
+});
+
+const midlandRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/midland",
+  component: MidlandPage,
+});
+
+const osborneParkRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/osborne-park",
+  component: OsborneParkPage,
+});
+
+const baldivisRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/baldivis",
+  component: BaldivisPage,
+});
+
+const clarksonRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/suburbs/clarkson",
+  component: ClarksonPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
@@ -109,6 +179,16 @@ const routeTree = rootRoute.addChildren([
   wallWashingRoute,
   aboutRoute,
   contactRoute,
+  subiacoRoute,
+  fremantleRoute,
+  joondalupRoute,
+  rockinghamRoute,
+  mandurahRoute,
+  armadaleRoute,
+  midlandRoute,
+  osborneParkRoute,
+  baldivisRoute,
+  clarksonRoute,
 ]);
 
 const router = createRouter({ routeTree });
